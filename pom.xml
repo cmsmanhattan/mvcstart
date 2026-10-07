@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cbsinc.cms</groupId>
+  <artifactId>annotations</artifactId>
+  <version>0.0.9</version>
+  <name>annotations</name>
+  
+     
+  <properties>
+        <auto-service.version>1.0-rc2</auto-service.version>
+        <project.java.version>17</project.java.version>
+		<java.source.version>${project.java.version}</java.source.version>
+		<java.target.version>${project.java.version}</java.target.version>
+		<java.compiler.version>${project.java.version}</java.compiler.version>
+		<java.compiler.debuglevel>source,lines,vars</java.compiler.debuglevel>
+		<java.compiler.verbose>false</java.compiler.verbose>
+        
+   </properties>
+   
+     <dependencies>
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+            <version>${auto-service.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        	<!-- Classes for logger -->
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-ext</artifactId>
+			<version>1.7.30</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.30</version>
+		</dependency>
+		
+		<dependency>
+	        <groupId>ch.qos.logback</groupId>
+	        <artifactId>logback-classic</artifactId>
+	        <version>1.2.3</version>
+   		 </dependency>
+   		 
+		
+    </dependencies>
+  
+  
+   <build>
+        <directory>${basedir}/target</directory>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources
+                </directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${basedir}/src/test/resources
+                </directory>
+            </testResource>
+        </testResources>
+        <plugins>
+        
+        
+        <!-- Plug-in compiler  -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<verbose>${java.compiler.verbose}</verbose>
+					<compilerVersion>${java.compiler.version}</compilerVersion>
+					<source>${java.source.version}</source>
+					<target>${java.target.version}</target>
+					<debuglevel>${java.compiler.debuglevel}</debuglevel>
+					<!--  - <generatedSourcesDirectory>${basedir}/target/generated-sources/</generatedSourcesDirectory> -->
+					<!-- 
+					<annotationProcessors>
+							<annotationProcessor>
+								com.nastel.annotation.agent.EventProcessor
+							</annotationProcessor>
+					</annotationProcessors>
+					 -->
+				</configuration>
+			</plugin>
+      </plugins>
+    </build>
+  
+  
+</project>
